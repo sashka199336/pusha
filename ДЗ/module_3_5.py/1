@@ -1,0 +1,12 @@
+def get_multiplied_digits(number): #аргумент - целое число и подсчёт произведения цифр этого числа
+     str_number = str(number)  # преобразование числа в строку
+     if len(str_number) > 1:  # длина строки должна быть > 1 чтобы взять срез str_number[1:]
+         first = int(str_number[0])  # первая цифра строки в числовом представлении
+         return first * get_multiplied_digits(int(str_number[1:]))  # умножение первой цифры числа
+         # на результат работы этой же функции с числом, но без первой цифры
+     else:         # если длина строки < = 1
+         return number  # возврат оставшейся цифры как целого числа
+result = get_multiplied_digits(1234)
+result2 = get_multiplied_digits(7)
+print(result)
+print(result2)
