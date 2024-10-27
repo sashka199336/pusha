@@ -1,0 +1,52 @@
+class Animal: # класс животные
+    def __init__(self, name): #
+        self.alive = True # живой
+        self.fed = False # накормленный
+        self.name = name # индивидуальное имя животного
+
+    def eat(self, food): #метод с параметром, принимающий объекты классов растений
+        if food.edible: # если растение съедобное, то
+            print(f"{self.name} съел {food.name}") # вывод на экран
+            self.fed = True # меняет атрибут "накормленный" на True
+        else: # в остальных случаях
+            print(f"{self.name} не стал есть {food.name}") # вывод на экран
+            self.alive = False # меняет атрибут "живой" на False
+
+class Plant: # класс растения
+    def __init__(self, name): #
+        self.edible = False # атрибут "съедобность"
+        self.name = name # индивидуальное название каждого растения
+
+class Mammal(Animal): # класс млекопитающие
+    pass
+
+class Predator(Animal): # класс хищники
+    pass
+
+class Flower(Plant): # класс цветы
+    pass  #
+
+class Fruit(Plant): # класс фрукты
+    def __init__(self, name): #
+        Plant.__init__(self,name) #
+        self.edible = True  # Переопределяем атрибут "съедобность"
+
+# Создаем объекты классов
+a1 = Predator('Волк с Уолл-Стрит')
+a2 = Mammal('Хатико')
+p1 = Flower('Цветик семицветик')
+p2 = Fruit('Заводной апельсин')
+
+# Проверяем начальные состояния
+print(a1.name)
+print(p1.name)
+print(a1.alive)
+print(a2.fed)
+
+# Выполняем действия
+a1.eat(p1)  # Хищник пытается съесть цветок
+a2.eat(p2)  # Млекопитающее ест фрукт
+
+# Проверяем окончания состояния
+print(a1.alive)
+print(a2.fed)
