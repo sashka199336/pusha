@@ -1,0 +1,18 @@
+class House:  # Реализация класса House
+    def __init__(self, name, number_of_floors):  # передача названия и кол. этажей в метод __init__
+        self.name = name  # атрибут объекта - имя
+        self.number_of_floors = number_of_floors  #  атрибут объекта - кол. этажей
+
+    def go_to(self, new_floor):  #  создание метода go_to с параметром - этажа
+        if new_floor < 1 or new_floor > self.number_of_floors:  # если этаж < 1 или этаж > кол этажей дома, то
+            print('"Такого этажа не существует"')  #  печатается сообщение
+        else:  #  в остальных случаях
+            for floor in range (1, new_floor + 1):  # перебираются этажи от 1 до последнего существующего
+                print(floor)  # печать этажа
+
+h1 = House('ЖК Эльбрус', 30)
+h2 = House('Домик в деревне', 3)
+h1.go_to(10)
+h1.go_to(60)
+h2.go_to(3)
+h2.go_to(4)
